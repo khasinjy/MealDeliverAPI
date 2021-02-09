@@ -2,6 +2,7 @@ package org.scholanova.mealdeliverapi.domain.Livraison;
 
 import org.scholanova.mealdeliverapi.domain.Client;
 import org.scholanova.mealdeliverapi.domain.Commande.Commande;
+import org.scholanova.mealdeliverapi.domain.Commande.EtatCommande;
 import org.scholanova.mealdeliverapi.domain.Livreur;
 import org.scholanova.mealdeliverapi.domain.Restaurant;
 
@@ -12,6 +13,7 @@ public class Livraison {
     Restaurant restaurant;
     Client client;
     List<Commande> listeCommandes;
+    EtatLivraison etat;
 
     public Livraison() {
     }
@@ -53,6 +55,14 @@ public class Livraison {
 
     public void setListeCommandes(List<Commande> listeCommandes) {
         this.listeCommandes = listeCommandes;
+    }
+
+    public EtatLivraison getEtat() {
+        return etat;
+    }
+
+    public void setEtat(EtatLivraison etat) {
+        this.etat = etat;
     }
 
 
