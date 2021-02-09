@@ -1,4 +1,4 @@
-package org.scholanova.mealdeliverapi.model;
+package org.scholanova.mealdeliverapi.mvc.model;
 
 public class MainCourse {
 

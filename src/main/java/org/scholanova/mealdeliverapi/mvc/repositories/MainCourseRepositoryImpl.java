@@ -1,7 +1,7 @@
-package org.scholanova.mealdeliverapi.repositories;
+package org.scholanova.mealdeliverapi.mvc.repositories;
 
-import org.scholanova.mealdeliverapi.model.MainCourse;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+import org.scholanova.mealdeliverapi.mvc.model.MainCourse;
+import org.scholanova.mealdeliverapi.mvc.repositories.MainCourseRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Arrays;

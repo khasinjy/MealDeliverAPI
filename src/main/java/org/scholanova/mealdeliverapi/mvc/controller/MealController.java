@@ -1,7 +1,7 @@
-package org.scholanova.mealdeliverapi.controller;
+package org.scholanova.mealdeliverapi.mvc.controller;
 
-import org.scholanova.mealdeliverapi.model.MainCourse;
-import org.scholanova.mealdeliverapi.repositories.MainCourseRepository;
+import org.scholanova.mealdeliverapi.mvc.model.MainCourse;
+import org.scholanova.mealdeliverapi.mvc.repositories.MainCourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
