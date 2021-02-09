@@ -7,7 +7,6 @@ public class ItemNourriture {
     float prix;
     String nom;
     int tempsPreparation;
-    EtatCommande etatCommande;
 
     public ItemNourriture() {
     }
@@ -36,21 +35,12 @@ public class ItemNourriture {
         this.tempsPreparation = tempsPreparation;
     }
 
-    public EtatCommande getEtatCommande() {
-        return etatCommande;
-    }
-
-    public void setEtatCommande(EtatCommande etatCommande) {
-        this.etatCommande = etatCommande;
-    }
-
     @Override
     public String   toString() {
         return "ItemNourriture{" +
                 "prix=" + prix +
                 ", nom='" + nom + '\'' +
                 ", tempsDeCuisson=" + tempsPreparation +
-                ", etatCommande=" + etatCommande +
                 '}';
     }
 }
