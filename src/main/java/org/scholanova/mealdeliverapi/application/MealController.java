@@ -1,7 +1,7 @@
-package org.scholanova.mealdeliverapi.mvc.controller;
+package org.scholanova.mealdeliverapi.application;
 
-import org.scholanova.mealdeliverapi.mvc.model.MainCourse;
-import org.scholanova.mealdeliverapi.mvc.repositories.MainCourseRepository;
+import org.scholanova.mealdeliverapi.domain.Plat;
+import org.scholanova.mealdeliverapi.infrastructure.Plat.MainCourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +16,7 @@ public class MealController {
 
 
     @GetMapping("/mains")
-    public List<MainCourse> listMainCourses () {
+    public List<Plat> listMainCourses () {
         return mainCourseRepository.listAll();
 
     }

@@ -1,4 +1,4 @@
-package org.scholanova.mealdeliverapi.Client.model;
+package org.scholanova.mealdeliverapi.domain;
 
 public class Client {
 

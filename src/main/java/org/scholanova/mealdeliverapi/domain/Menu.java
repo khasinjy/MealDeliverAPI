@@ -1,7 +1,7 @@
-package org.scholanova.mealdeliverapi.Nourriture.Menu.model;
+package org.scholanova.mealdeliverapi.domain;
 
-import org.scholanova.mealdeliverapi.Nourriture.Boisson.model.Boisson;
-import org.scholanova.mealdeliverapi.Nourriture.ItemNourriture.model.ItemNourriture;
+import org.scholanova.mealdeliverapi.domain.Boisson;
+import org.scholanova.mealdeliverapi.domain.ItemNourriture;
 
 import java.util.List;
 

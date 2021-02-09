@@ -1,4 +1,4 @@
-package org.scholanova.mealdeliverapi.Nourriture.Boisson.model;
+package org.scholanova.mealdeliverapi.domain;
 
 public class Boisson {
 

@@ -1,4 +1,4 @@
-package org.scholanova.mealdeliverapi.Restaurant.model;
+package org.scholanova.mealdeliverapi.domain;
 
 public class Restaurant {
 

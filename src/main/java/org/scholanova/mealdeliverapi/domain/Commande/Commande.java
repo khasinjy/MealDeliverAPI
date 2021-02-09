@@ -1,8 +1,8 @@
-package org.scholanova.mealdeliverapi.Commande.model;
+package org.scholanova.mealdeliverapi.domain.Commande;
 
-import org.scholanova.mealdeliverapi.Client.model.Client;
-import org.scholanova.mealdeliverapi.Nourriture.ItemNourriture.model.ItemNourriture;
-import org.scholanova.mealdeliverapi.Restaurant.model.Restaurant;
+import org.scholanova.mealdeliverapi.domain.Client;
+import org.scholanova.mealdeliverapi.domain.ItemNourriture;
+import org.scholanova.mealdeliverapi.domain.Restaurant;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,7 +13,8 @@ public class Commande {
     Restaurant restaurant;
     ArrayList<ItemNourriture> contenu;
     Date heureLivraison;
-    boolean demandeCouvertPlastique;
+    boolean couvertPlastique;
+    EtatCommande etat;
 
     public Commande() {
     }
@@ -50,12 +51,20 @@ public class Commande {
         this.heureLivraison = heureLivraison;
     }
 
-    public boolean isDemandeCouvertPlastique() {
-        return demandeCouvertPlastique;
+    public boolean isCouvertPlastique() {
+        return couvertPlastique;
     }
 
-    public void setDemandeCouvertPlastique(boolean demandeCouvertPlastique) {
-        this.demandeCouvertPlastique = demandeCouvertPlastique;
+    public void setCouvertPlastique(boolean couvertPlastique) {
+        this.couvertPlastique = couvertPlastique;
+    }
+
+    public EtatCommande getEtat() {
+        return etat;
+    }
+
+    public void setEtat(EtatCommande etat) {
+        this.etat = etat;
     }
 
     @Override
@@ -65,7 +74,8 @@ public class Commande {
                 ", restaurant=" + restaurant +
                 ", contenu=" + contenu +
                 ", heureLivraison=" + heureLivraison +
-                ", demandeCouvertPlastique=" + demandeCouvertPlastique +
+                ", couvertPlastique=" + couvertPlastique +
+                ", etat=" + etat +
                 '}';
     }
 }
