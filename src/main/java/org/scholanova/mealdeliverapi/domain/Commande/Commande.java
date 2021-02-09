@@ -4,16 +4,27 @@ import org.scholanova.mealdeliverapi.domain.Client;
 import org.scholanova.mealdeliverapi.domain.ItemNourriture;
 import org.scholanova.mealdeliverapi.domain.Restaurant;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 
+@Entity
 public class Commande {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column
     Client client;
+    @Column
     Restaurant restaurant;
+    @Column
     ArrayList<ItemNourriture> contenu;
+    @Column
     Date heureLivraison;
+    @Column
     boolean couvertPlastique;
+    @Column
     EtatCommande etat;
 
     public Commande() {

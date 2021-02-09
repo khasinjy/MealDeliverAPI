@@ -3,14 +3,24 @@ package org.scholanova.mealdeliverapi.domain;
 import org.scholanova.mealdeliverapi.domain.Boisson;
 import org.scholanova.mealdeliverapi.domain.ItemNourriture;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
 public class Menu {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column
     ItemNourriture entree;
+    @Column
     ItemNourriture plat;
+    @Column
     ItemNourriture dessert;
+    @Column
     Boisson boisson;
+    @Column
     List<ItemNourriture> supplement;
 
     public ItemNourriture getEntree() {

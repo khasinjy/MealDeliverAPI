@@ -22,8 +22,16 @@ public class MealdeliverapiApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-//		jdbc.execute("DROP TABLE IF EXISTS plat");
-//		jdbc.execute("CREATE TABLE flights(id INTEGER PRIMARY KEY AUTO_INCREMENT, flight_number INTEGER, departure VARCHAR)");
+		jdbc.execute("DROP TABLE IF EXISTS nourriture");
+		jdbc.execute("DROP TABLE IF EXISTS menus");
+		jdbc.execute("DROP TABLE IF EXISTS restaurants");
+		jdbc.execute("DROP TABLE IF EXISTS commandes");
+
+		jdbc.execute("CREATE TABLE nourriture(id INTEGER PRIMARY KEY AUTO_INCREMENT, prix FLOAT, nom VARCHAR, tempsPreparation INT)");
+//		jdbc.execute("CREATE TABLE menus(id INTEGER PRIMARY KEY AUTO_INCREMENT, prix FLOAT, nom VARCHAR, tempsPreparation INT)");
+//		jdbc.execute("CREATE TABLE restaurants(id INTEGER PRIMARY KEY AUTO_INCREMENT, prix FLOAT, nom VARCHAR, tempsPreparation INT)");
+//		jdbc.execute("CREATE TABLE commandes(id INTEGER PRIMARY KEY AUTO_INCREMENT, prix FLOAT, nom VARCHAR, tempsPreparation INT)");
+//
 //		jdbc.batchUpdate("INSERT INTO flights (flight_number, departure) values(123, 'Paris')");
 //		jdbc.batchUpdate("INSERT INTO flights (flight_number, departure) values(451, 'NYC')");
 
