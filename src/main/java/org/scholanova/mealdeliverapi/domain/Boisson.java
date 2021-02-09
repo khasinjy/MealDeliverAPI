@@ -1,8 +1,17 @@
 package org.scholanova.mealdeliverapi.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Boisson {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column
     float price;
+    @Column
     String nom;
 
     public Boisson() {

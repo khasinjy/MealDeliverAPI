@@ -1,12 +1,12 @@
 package org.scholanova.mealdeliverapi.domain.Commande;
 
 import org.scholanova.mealdeliverapi.domain.Client;
-import org.scholanova.mealdeliverapi.domain.ItemNourriture;
+import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
 import org.scholanova.mealdeliverapi.domain.Restaurant;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Commande {
@@ -14,17 +14,19 @@ public class Commande {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "client", referencedColumnName = "id")
     Client client;
-    @Column
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "restaurant", referencedColumnName = "id")
     Restaurant restaurant;
-    @Column
-    ArrayList<ItemNourriture> contenu;
+    @OneToMany
+    List<ItemNourriture> contenu;
     @Column
     Date heureLivraison;
     @Column
     boolean couvertPlastique;
-    @Column
+    @Enumerated(EnumType.STRING)
     EtatCommande etat;
 
     public Commande() {
@@ -46,11 +48,11 @@ public class Commande {
         this.restaurant = restaurant;
     }
 
-    public ArrayList<ItemNourriture> getContenu() {
+    public List<ItemNourriture> getContenu() {
         return contenu;
     }
 
-    public void setContenu(ArrayList<ItemNourriture> contenu) {
+    public void setContenu(List<ItemNourriture> contenu) {
         this.contenu = contenu;
     }
 

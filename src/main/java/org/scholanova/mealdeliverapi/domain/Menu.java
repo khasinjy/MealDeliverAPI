@@ -1,7 +1,6 @@
 package org.scholanova.mealdeliverapi.domain;
 
-import org.scholanova.mealdeliverapi.domain.Boisson;
-import org.scholanova.mealdeliverapi.domain.ItemNourriture;
+import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,15 +11,19 @@ public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "entree", referencedColumnName = "id")
     ItemNourriture entree;
-    @Column
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "plat", referencedColumnName = "id")
     ItemNourriture plat;
-    @Column
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "dessert", referencedColumnName = "id")
     ItemNourriture dessert;
-    @Column
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "boisson", referencedColumnName = "id")
     Boisson boisson;
-    @Column
+    @OneToMany
     List<ItemNourriture> supplement;
 
     public ItemNourriture getEntree() {
