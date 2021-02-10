@@ -2,7 +2,6 @@ package org.scholanova.mealdeliverapi.domain.Livraison;
 
 import org.scholanova.mealdeliverapi.domain.Client;
 import org.scholanova.mealdeliverapi.domain.Commande.Commande;
-import org.scholanova.mealdeliverapi.domain.Commande.EtatCommande;
 import org.scholanova.mealdeliverapi.domain.Livreur;
 import org.scholanova.mealdeliverapi.domain.Restaurant;
 

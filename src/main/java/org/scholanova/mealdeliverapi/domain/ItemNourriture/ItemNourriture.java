@@ -1,13 +1,21 @@
-package org.scholanova.mealdeliverapi.domain;
+package org.scholanova.mealdeliverapi.domain.ItemNourriture;
 
-import org.scholanova.mealdeliverapi.domain.Commande.EtatCommande;
+import javax.persistence.*;
 
+@Entity
 public class ItemNourriture {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column
     float prix;
+    @Column
     String nom;
+    @Column
     int tempsPreparation;
-    EtatCommande etatCommande;
+    @Enumerated(EnumType.STRING)
+    TypeNourriture type;
 
     public ItemNourriture() {
     }
@@ -36,21 +44,22 @@ public class ItemNourriture {
         this.tempsPreparation = tempsPreparation;
     }
 
-    public EtatCommande getEtatCommande() {
-        return etatCommande;
+    public TypeNourriture getType() {
+        return type;
     }
 
-    public void setEtatCommande(EtatCommande etatCommande) {
-        this.etatCommande = etatCommande;
+    public void setType(TypeNourriture type) {
+        this.type = type;
     }
 
     @Override
-    public String   toString() {
+    public String toString() {
         return "ItemNourriture{" +
-                "prix=" + prix +
+                "id=" + id +
+                ", prix=" + prix +
                 ", nom='" + nom + '\'' +
-                ", tempsDeCuisson=" + tempsPreparation +
-                ", etatCommande=" + etatCommande +
+                ", tempsPreparation=" + tempsPreparation +
+                ", type=" + type +
                 '}';
     }
 }

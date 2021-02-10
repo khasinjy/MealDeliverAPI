@@ -1,19 +1,26 @@
 package org.scholanova.mealdeliverapi.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Restaurant {
 
-    int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column
     String nom;
+    @Column
     String adresse;
 
     public Restaurant() {
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

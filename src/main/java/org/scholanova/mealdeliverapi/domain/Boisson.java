@@ -1,19 +1,28 @@
 package org.scholanova.mealdeliverapi.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class Boisson {
 
-    float price;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @Column
+    float prix;
+    @Column
     String nom;
 
     public Boisson() {
     }
 
-    public float getPrice() {
-        return price;
+    public float getPrix() {
+        return prix;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
+    public void setPrix(float prix) {
+        this.prix = prix;
     }
 
     public String getNom() {
@@ -27,7 +36,7 @@ public class Boisson {
     @Override
     public String toString() {
         return "Boisson{" +
-                "price=" + price +
+                "prix=" + prix +
                 ", nom='" + nom + '\'' +
                 '}';
     }
