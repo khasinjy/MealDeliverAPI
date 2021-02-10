@@ -7,8 +7,6 @@ import org.scholanova.mealdeliverapi.infrastructure.Plat.repository.NourritureRe
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 public class MealController {
 
@@ -23,14 +21,6 @@ public class MealController {
         return nourritureRepository.findAll();
 
     }
-
-//    @GetMapping("/restaurant/menus")
-//    @ResponseBody
-//    public List<Menu> listMenus () {
-//        return menuRepository.listerTousLesMenus();
-//
-//    }
-
 
     @GetMapping("/restaurant/menus")
     public Iterable<Menu> listMenus() {

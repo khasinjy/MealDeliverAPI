@@ -13,10 +13,10 @@ public class Menu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @JoinColumn(name = "entreeID", referencedColumnName = "id")
-    @OneToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     ItemNourriture entree;
 
+    @ManyToMany
     @OneToOne(fetch=FetchType.LAZY)
     ItemNourriture plat;
 
