@@ -16,18 +16,25 @@ public class Menu {
     @ManyToOne
     ItemNourriture entree;
 
-    @ManyToMany
-    @OneToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     ItemNourriture plat;
 
-    @OneToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     ItemNourriture dessert;
 
-    @OneToOne(fetch=FetchType.LAZY)
+    @ManyToOne
     Boisson boisson;
 
-    @OneToMany
+    @OneToMany(mappedBy="id")
     List<ItemNourriture> supplement;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public ItemNourriture getEntree() {
         return entree;
@@ -69,23 +76,6 @@ public class Menu {
         this.supplement = supplement;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Menu{" +
-                "entree=" + entree +
-                ", plat=" + plat +
-                ", dessert=" + dessert +
-                ", boisson=" + boisson +
-                ", supplement=" + supplement +
-                '}';
+    public Menu() {
     }
 }

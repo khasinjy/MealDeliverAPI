@@ -3,7 +3,7 @@ package org.scholanova.mealdeliverapi.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "boisson")
+@Table(name = "boissons")
 public class Boisson {
 
     @Id

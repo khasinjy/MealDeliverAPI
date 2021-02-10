@@ -1,7 +1,5 @@
 package org.scholanova.mealdeliverapi.domain.ItemNourriture;
 
-import org.scholanova.mealdeliverapi.domain.Menu;
-
 import javax.persistence.*;
 
 @Entity
@@ -23,8 +21,6 @@ public class ItemNourriture {
 
     @Enumerated(EnumType.STRING)
     TypeNourriture type;
-
-
 
     public ItemNourriture() {
     }
