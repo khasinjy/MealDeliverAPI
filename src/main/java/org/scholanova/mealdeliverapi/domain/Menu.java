@@ -6,23 +6,26 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "menus")
 public class Menu {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "entree", referencedColumnName = "id")
+
+//    @JoinColumn(name = "entreeID", referencedColumnName = "id")
+    @OneToOne(fetch=FetchType.LAZY)
     ItemNourriture entree;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "plat", referencedColumnName = "id")
+
+    @OneToOne(fetch=FetchType.LAZY)
     ItemNourriture plat;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "dessert", referencedColumnName = "id")
+
+    @OneToOne(fetch=FetchType.LAZY)
     ItemNourriture dessert;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "boisson", referencedColumnName = "id")
+
+    @OneToOne(fetch=FetchType.LAZY)
     Boisson boisson;
+
     @OneToMany
     List<ItemNourriture> supplement;
 
@@ -65,6 +68,15 @@ public class Menu {
     public void setSupplement(List<ItemNourriture> supplement) {
         this.supplement = supplement;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
     @Override
     public String toString() {

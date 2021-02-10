@@ -1,21 +1,30 @@
 package org.scholanova.mealdeliverapi.domain.ItemNourriture;
 
+import org.scholanova.mealdeliverapi.domain.Menu;
+
 import javax.persistence.*;
 
 @Entity
+@Table(name = "nourriture")
 public class ItemNourriture {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column
     float prix;
+
     @Column
     String nom;
-    @Column
+
+    @Column(name = "TEMPSPREPARATION")
     int tempsPreparation;
+
     @Enumerated(EnumType.STRING)
     TypeNourriture type;
+
+
 
     public ItemNourriture() {
     }
@@ -34,6 +43,14 @@ public class ItemNourriture {
 
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public int getTempsPreparation() {

@@ -1,7 +1,9 @@
 package org.scholanova.mealdeliverapi.application;
 
 import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
-import org.scholanova.mealdeliverapi.infrastructure.Plat.repository.MainCourseRepository;
+import org.scholanova.mealdeliverapi.domain.Menu;
+import org.scholanova.mealdeliverapi.infrastructure.Menu.MenuRepository;
+import org.scholanova.mealdeliverapi.infrastructure.Plat.repository.NourritureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,13 +13,29 @@ import java.util.List;
 public class MealController {
 
     @Autowired
-    MainCourseRepository mainCourseRepository;
+    NourritureRepository nourritureRepository;
 
+    @Autowired
+    MenuRepository menuRepository;
 
     @GetMapping("/restaurant/carte")
-    public List<ItemNourriture> listMainCourses () {
-        return mainCourseRepository.listAll();
+    public Iterable<ItemNourriture> listMainCourses () {
+        return nourritureRepository.findAll();
 
     }
+
+//    @GetMapping("/restaurant/menus")
+//    @ResponseBody
+//    public List<Menu> listMenus () {
+//        return menuRepository.listerTousLesMenus();
+//
+//    }
+
+
+    @GetMapping("/restaurant/menus")
+    public Iterable<Menu> listMenus() {
+        return menuRepository.findAll();
+    }
+
 
 }
