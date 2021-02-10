@@ -1,17 +1,18 @@
 package org.scholanova.mealdeliverapi;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.ArrayList;
+import java.util.Date;
+
 @SpringBootApplication
 public class MealdeliverapiApplication implements CommandLineRunner {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MealdeliverapiApplication.class, args);
-	}
 
 	@Autowired
 	JdbcTemplate jdbc;
@@ -36,4 +37,5 @@ public class MealdeliverapiApplication implements CommandLineRunner {
 		jdbc.batchUpdate("INSERT INTO restaurants(nom, adresse) values('Le soleil levant', '8 avenue Genéral de Gaulle');");
 
 	}
+
 }

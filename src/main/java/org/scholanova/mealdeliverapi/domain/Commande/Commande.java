@@ -32,6 +32,14 @@ public class Commande {
     public Commande() {
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Client getClient() {
         return client;
     }
@@ -80,15 +88,4 @@ public class Commande {
         this.etat = etat;
     }
 
-    @Override
-    public String toString() {
-        return "Commande{" +
-                "client=" + client +
-                ", restaurant=" + restaurant +
-                ", contenu=" + contenu +
-                ", heureLivraison=" + heureLivraison +
-                ", couvertPlastique=" + couvertPlastique +
-                ", etat=" + etat +
-                '}';
-    }
 }
