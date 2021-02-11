@@ -1,5 +1,6 @@
 package org.scholanova.mealdeliverapi.application.Menu;
-import org.scholanova.mealdeliverapi.domain.Menu.MenuMauvaisTypeException;
+import org.scholanova.mealdeliverapi.domain.Menu.Exception.MenuChoixIndisponibleException;
+import org.scholanova.mealdeliverapi.domain.Menu.Exception.MenuMauvaisTypeException;
 import org.scholanova.mealdeliverapi.application.ErrorInfo;
 
 import org.springframework.http.HttpStatus;
@@ -18,5 +19,13 @@ public class MenuControllerAdvice {
         ErrorInfo
         handleMenuMauvaisTypeException(HttpServletRequest req, Exception ex) {
             return new ErrorInfo(req.getRequestURL().toString(), ex);
+        }
+
+        @ResponseStatus(HttpStatus.NOT_FOUND)
+        @ExceptionHandler(MenuChoixIndisponibleException.class)
+        @ResponseBody
+        ErrorInfo
+        handleMenuChoixIndisponibleException(HttpServletRequest req, Exception ex) {
+                return new ErrorInfo(req.getRequestURL().toString(), ex);
         }
 }

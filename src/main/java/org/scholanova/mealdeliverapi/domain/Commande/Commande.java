@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "commande")
 public class Commande {
 
     @Id
@@ -22,7 +21,7 @@ public class Commande {
     @ManyToOne
     private Restaurant restaurant;
 
-    @OneToMany(mappedBy="id")
+    @OneToMany
     private List<ItemNourriture> contenu;
 
     @Column
