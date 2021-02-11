@@ -1,11 +1,12 @@
-package org.scholanova.mealdeliverapi.domain;
+package org.scholanova.mealdeliverapi.domain.Menu;
 
+import org.scholanova.mealdeliverapi.domain.Boisson;
 import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
+import org.scholanova.mealdeliverapi.domain.ItemNourriture.TypeNourriture;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "menus")
 public class Menu {
 
     @Id
@@ -28,43 +29,34 @@ public class Menu {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public ItemNourriture getEntree() {
         return entree;
-    }
-
-    public void setEntree(ItemNourriture entree) {
-        this.entree = entree;
     }
 
     public ItemNourriture getPlat() {
         return plat;
     }
 
-    public void setPlat(ItemNourriture plat) {
-        this.plat = plat;
-    }
-
     public ItemNourriture getDessert() {
         return dessert;
-    }
-
-    public void setDessert(ItemNourriture dessert) {
-        this.dessert = dessert;
     }
 
     public Boisson getBoisson() {
         return boisson;
     }
 
-    public void setBoisson(Boisson boisson) {
-        this.boisson = boisson;
+    public ItemNourriture verifType(TypeNourriture typeAttendu, ItemNourriture nourriture) {
+        if(typeAttendu != nourriture.getType()){
+            throw new MenuMauvaisTypeException(nourriture.getNom() + " n'est pas un(e) " + typeAttendu);
+        }
+        return nourriture;
     }
 
-    public Menu() {
+    public Menu(ItemNourriture entree, ItemNourriture plat, ItemNourriture dessert, Boisson boisson){
+            this.entree = verifType(TypeNourriture.ENTREE, entree);
+            this.plat = verifType(TypeNourriture.PLAT, plat);
+            this.dessert = verifType(TypeNourriture.DESSERT, dessert);
+            this.boisson = boisson;
     }
 
     @Override
