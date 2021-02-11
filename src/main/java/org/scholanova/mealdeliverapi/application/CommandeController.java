@@ -1,43 +1,20 @@
 package org.scholanova.mealdeliverapi.application;
 
 import org.scholanova.mealdeliverapi.domain.Commande.Commande;
-import org.scholanova.mealdeliverapi.domain.Commande.EtatCommande;
-import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
-import org.scholanova.mealdeliverapi.domain.Menu;
 import org.scholanova.mealdeliverapi.infrastructure.Commande.CommandeRepository;
-import org.scholanova.mealdeliverapi.infrastructure.Menu.MenuRepository;
-import org.scholanova.mealdeliverapi.infrastructure.Plat.repository.NourritureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-public class MealController {
-
-    @Autowired
-    NourritureRepository nourritureRepository;
-
-    @Autowired
-    MenuRepository menuRepository;
-
+public class CommandeController {
     @Autowired
     CommandeRepository commandeRepository;
 
-    @GetMapping("/restaurant/carte")
-    public Iterable<ItemNourriture> listMainCourses () {
-        return nourritureRepository.findAll();
-
-    }
-
-    @GetMapping("/restaurant/menus")
-    public Iterable<Menu> listMenus() {
-        return menuRepository.findAll();
-    }
-
-
-    // Méthode Commande
     @GetMapping("/commandes")
     public Iterable<Commande> listCommandes() {
         return commandeRepository.findAll();
@@ -54,7 +31,4 @@ public class MealController {
         }
         return commandes;
     }
-
-
-
 }

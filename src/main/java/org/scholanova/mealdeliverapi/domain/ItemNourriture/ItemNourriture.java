@@ -3,7 +3,7 @@ package org.scholanova.mealdeliverapi.domain.ItemNourriture;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "nourriture")
+@Table(name = "nourriture", uniqueConstraints = @UniqueConstraint(columnNames={"nom"}))
 public class ItemNourriture {
 
     @Id
@@ -22,8 +22,13 @@ public class ItemNourriture {
     @Enumerated(EnumType.STRING)
     TypeNourriture type;
 
+
     public ItemNourriture() {
     }
+
+    public Long getId() { return id; }
+
+    public void setId(Long id) { this.id = id; }
 
     public float getPrix() {
         return prix;
@@ -39,14 +44,6 @@ public class ItemNourriture {
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public int getTempsPreparation() {

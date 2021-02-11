@@ -1,6 +1,5 @@
 package org.scholanova.mealdeliverapi;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +10,7 @@ import java.util.Date;
 @SpringBootApplication
 public class MealdeliverapiApplication implements CommandLineRunner {
 
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		SpringApplication.run(MealdeliverapiApplication.class, args);
 	}
 
@@ -20,4 +19,5 @@ public class MealdeliverapiApplication implements CommandLineRunner {
 
 
 	}
+
 }
