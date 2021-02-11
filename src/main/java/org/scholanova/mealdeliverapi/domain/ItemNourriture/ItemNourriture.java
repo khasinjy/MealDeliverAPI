@@ -16,7 +16,7 @@ public class ItemNourriture {
     @Column
     String nom;
 
-    @Column(name = "TEMPSPREPARATION")
+    @Column
     int tempsPreparation;
 
     @Enumerated(EnumType.STRING)
