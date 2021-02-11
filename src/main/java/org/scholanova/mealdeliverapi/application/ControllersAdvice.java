@@ -1,8 +1,11 @@
 package org.scholanova.mealdeliverapi.application;
+import org.scholanova.mealdeliverapi.application.controllers.MenuController;
+import org.scholanova.mealdeliverapi.application.controllers.NourritureController;
+import org.scholanova.mealdeliverapi.application.controllers.RestaurantController;
 import org.scholanova.mealdeliverapi.domain.Menu.Exception.MenuChoixIndisponibleException;
 import org.scholanova.mealdeliverapi.domain.Menu.Exception.MenuMauvaisTypeException;
 
-import org.scholanova.mealdeliverapi.domain.Restaurant.RestaurantNonTrouveException;
+import org.scholanova.mealdeliverapi.domain.Restaurant.Exception.RestaurantNonTrouveException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

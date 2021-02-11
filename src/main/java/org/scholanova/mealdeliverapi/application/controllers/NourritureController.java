@@ -1,7 +1,7 @@
-package org.scholanova.mealdeliverapi.application;
+package org.scholanova.mealdeliverapi.application.controllers;
 
 import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
-import org.scholanova.mealdeliverapi.domain.Restaurant.RestaurantNonTrouveException;
+import org.scholanova.mealdeliverapi.domain.Restaurant.Exception.RestaurantNonTrouveException;
 import org.scholanova.mealdeliverapi.infrastructure.repository.NourritureRepository;
 import org.scholanova.mealdeliverapi.infrastructure.repository.RestaurantRepository;
 import org.scholanova.mealdeliverapi.infrastructure.repository.RestoContientRepository;
