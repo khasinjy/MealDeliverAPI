@@ -12,22 +12,26 @@ import java.util.List;
 public class Commande {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "client", referencedColumnName = "id")
-    Client client;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "restaurant", referencedColumnName = "id")
-    Restaurant restaurant;
+
+    @ManyToOne
+    private Client client;
+
+    @ManyToOne
+    private Restaurant restaurant;
+
     @OneToMany
-    List<ItemNourriture> contenu;
+    private List<ItemNourriture> contenu;
+
     @Column
-    Date heureLivraison;
+    private Date heureLivraison;
+
     @Column
     boolean couvertPlastique;
+
     @Enumerated(EnumType.STRING)
-    EtatCommande etat;
+    private EtatCommande etat;
 
 
     public Commande() {

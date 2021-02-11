@@ -3,6 +3,7 @@ package org.scholanova.mealdeliverapi.domain.Menu;
 import org.scholanova.mealdeliverapi.domain.Boisson;
 import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
 import org.scholanova.mealdeliverapi.domain.ItemNourriture.TypeNourriture;
+import org.scholanova.mealdeliverapi.domain.Menu.Exception.MenuMauvaisTypeException;
 
 import javax.persistence.*;
 
@@ -46,7 +47,7 @@ public class Menu {
     }
 
     public ItemNourriture verifType(TypeNourriture typeAttendu, ItemNourriture nourriture) {
-        if(typeAttendu != nourriture.getType()){
+        if( typeAttendu != nourriture.getType()){
             throw new MenuMauvaisTypeException(nourriture.getNom() + " n'est pas un(e) " + typeAttendu);
         }
         return nourriture;

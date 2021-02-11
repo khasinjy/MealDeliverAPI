@@ -1,15 +1,16 @@
 package org.scholanova.mealdeliverapi.application;
+import org.scholanova.mealdeliverapi.domain.Menu.Exception.MenuChoixIndisponibleException;
+import org.scholanova.mealdeliverapi.domain.Menu.Exception.MenuMauvaisTypeException;
 
-import org.scholanova.mealdeliverapi.domain.Menu.MenuMauvaisTypeException;
 import org.scholanova.mealdeliverapi.domain.Restaurant.RestaurantNonTrouveException;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
-
 import javax.servlet.http.HttpServletRequest;
 
-@org.springframework.web.bind.annotation.ControllerAdvice(assignableTypes =  {RestaurantController.class, NourritureController.class, MenuController.class})
+@ControllerAdvice(assignableTypes =  {RestaurantController.class, MenuController.class, NourritureController.class})
 public class ControllersAdvice {
 
         @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
@@ -17,6 +18,14 @@ public class ControllersAdvice {
         @ResponseBody
         ErrorInfo
         handleMenuMauvaisTypeException(HttpServletRequest req, Exception ex) {
+            return new ErrorInfo(req.getRequestURL().toString(), ex);
+        }
+
+        @ResponseStatus(HttpStatus.NOT_FOUND)
+        @ExceptionHandler(MenuChoixIndisponibleException.class)
+        @ResponseBody
+        ErrorInfo
+        handleMenuChoixIndisponibleException(HttpServletRequest req, Exception ex) {
                 return new ErrorInfo(req.getRequestURL().toString(), ex);
         }
 
@@ -25,6 +34,6 @@ public class ControllersAdvice {
         @ResponseBody
         ErrorInfo
         handleRestaurantNonTrouveException(HttpServletRequest req, Exception ex) {
-            return new ErrorInfo(req.getRequestURL().toString(), ex);
+                return new ErrorInfo(req.getRequestURL().toString(), ex);
         }
 }
