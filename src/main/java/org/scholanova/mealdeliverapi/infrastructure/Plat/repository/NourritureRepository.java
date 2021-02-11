@@ -1,10 +1,11 @@
 package org.scholanova.mealdeliverapi.infrastructure.Plat.repository;
 
 import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
+public interface NourritureRepository  extends CrudRepository<ItemNourriture, Long> {
 
-public interface NourritureRepository extends CrudRepository<ItemNourriture, Long> {
-
+    @Query("SELECT n FROM ItemNourriture n WHERE n.nom = ?1")
+    ItemNourriture findByName(String nom);
 }
