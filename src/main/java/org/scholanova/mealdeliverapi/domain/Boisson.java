@@ -3,14 +3,16 @@ package org.scholanova.mealdeliverapi.domain;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "boissons")
 public class Boisson {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
     float prix;
+
     @Column
     String nom;
 
