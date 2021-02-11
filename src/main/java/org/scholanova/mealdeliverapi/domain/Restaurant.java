@@ -11,10 +11,10 @@ public class Restaurant {
     private Long id;
 
     @Column
-    String nom;
+    private String nom;
 
     @Column
-    String adresse;
+    private String adresse;
 
     public Restaurant() {
     }

@@ -11,16 +11,16 @@ public class ItemNourriture {
     private Long id;
 
     @Column
-    float prix;
+    private float prix;
 
     @Column
-    String nom;
+    private String nom;
 
     @Column(name = "TEMPSPREPARATION")
-    int tempsPreparation;
+    private int tempsPreparation;
 
     @Enumerated(EnumType.STRING)
-    TypeNourriture type;
+    private TypeNourriture type;
 
 
     public ItemNourriture() {
