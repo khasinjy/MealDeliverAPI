@@ -1,4 +1,4 @@
-package org.scholanova.mealdeliverapi.application.Menu;
+package org.scholanova.mealdeliverapi.application;
 
 import org.scholanova.mealdeliverapi.domain.Boisson;
 import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
@@ -26,12 +26,12 @@ public class MenuController {
     @PostMapping("/restaurant/addMenu")
     @ResponseStatus(HttpStatus.CREATED)
     public void addMenu(@RequestBody MenuPersistence menu) {
-            ItemNourriture entree = nourritureRepository.findByName(menu.getEntree());
-            ItemNourriture plat = nourritureRepository.findByName(menu.getPlat());
-            ItemNourriture dessert = nourritureRepository.findByName(menu.getDessert());
-            Boisson boisson = boissonRepository.findByName(menu.getBoisson());
-            Menu newMenu = new Menu(entree, plat, dessert, boisson);
-            menuRepository.save(newMenu);
+        ItemNourriture entree = nourritureRepository.findByName(menu.getEntree());
+        ItemNourriture plat = nourritureRepository.findByName(menu.getPlat());
+        ItemNourriture dessert = nourritureRepository.findByName(menu.getDessert());
+        Boisson boisson = boissonRepository.findByName(menu.getBoisson());
+        Menu newMenu = new Menu(entree, plat, dessert, boisson);
+        menuRepository.save(newMenu);
     }
 
     @GetMapping("/restaurant/menus")

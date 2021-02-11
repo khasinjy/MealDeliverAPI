@@ -1,12 +1,8 @@
-package org.scholanova.mealdeliverapi.domain;
-
-import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
+package org.scholanova.mealdeliverapi.domain.Restaurant;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "restaurants")
 public class Restaurant {
 
     @Id
@@ -18,10 +14,6 @@ public class Restaurant {
 
     @Column
     private String adresse;
-
-    @ManyToMany
-    @JoinTable(name = "restoCarte")
-    List<ItemNourriture> items;
 
     public Restaurant() {
     }
@@ -38,20 +30,8 @@ public class Restaurant {
         return nom;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
     public String getAdresse() {
         return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public List<ItemNourriture> getItems() {
-        return items;
     }
 
     @Override
@@ -60,7 +40,6 @@ public class Restaurant {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", adresse='" + adresse + '\'' +
-                ", items=" + items +
                 '}';
     }
 }

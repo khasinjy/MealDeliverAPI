@@ -1,9 +1,6 @@
 package org.scholanova.mealdeliverapi.domain.ItemNourriture;
 
-import org.scholanova.mealdeliverapi.domain.Restaurant;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "nourriture", uniqueConstraints = @UniqueConstraint(columnNames={"nom"}))
@@ -19,14 +16,11 @@ public class ItemNourriture {
     @Column
     private String nom;
 
-    @Column(name = "TEMPSPREPARATION")
+    @Column
     private int tempsPreparation;
 
     @Enumerated(EnumType.STRING)
     private TypeNourriture type;
-
-    @ManyToMany(mappedBy = "items")
-    List<Restaurant> restaurants;
 
     public ItemNourriture() {
     }
@@ -51,10 +45,6 @@ public class ItemNourriture {
         return type;
     }
 
-    public List<Restaurant> getRestaurants() {
-        return restaurants;
-    }
-
     @Override
     public String toString() {
         return "ItemNourriture{" +
@@ -63,7 +53,6 @@ public class ItemNourriture {
                 ", nom='" + nom + '\'' +
                 ", tempsPreparation=" + tempsPreparation +
                 ", type=" + type +
-                ", restaurants=" + restaurants +
                 '}';
     }
 }

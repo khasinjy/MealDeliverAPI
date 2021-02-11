@@ -2,7 +2,7 @@ package org.scholanova.mealdeliverapi.domain.Commande;
 
 import org.scholanova.mealdeliverapi.domain.Client;
 import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
-import org.scholanova.mealdeliverapi.domain.Restaurant;
+import org.scholanova.mealdeliverapi.domain.Restaurant.Restaurant;
 
 import javax.persistence.*;
 import java.util.Date;
