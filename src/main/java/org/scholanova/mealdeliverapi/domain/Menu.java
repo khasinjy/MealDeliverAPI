@@ -25,9 +25,6 @@ public class Menu {
     @ManyToOne
     Boisson boisson;
 
-    @OneToMany(mappedBy="id")
-    List<ItemNourriture> supplement;
-
     public Long getId() {
         return id;
     }
@@ -68,14 +65,17 @@ public class Menu {
         this.boisson = boisson;
     }
 
-    public List<ItemNourriture> getSupplement() {
-        return supplement;
-    }
-
-    public void setSupplement(List<ItemNourriture> supplement) {
-        this.supplement = supplement;
-    }
-
     public Menu() {
+    }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "id=" + id +
+                ", entree=" + entree +
+                ", plat=" + plat +
+                ", dessert=" + dessert +
+                ", boisson=" + boisson +
+                '}';
     }
 }
