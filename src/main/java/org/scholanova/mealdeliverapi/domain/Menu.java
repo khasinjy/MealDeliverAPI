@@ -3,7 +3,6 @@ package org.scholanova.mealdeliverapi.domain;
 import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "menus")
@@ -14,16 +13,16 @@ public class Menu {
     private Long id;
 
     @ManyToOne
-    ItemNourriture entree;
+    private ItemNourriture entree;
 
     @ManyToOne
-    ItemNourriture plat;
+    private ItemNourriture plat;
 
     @ManyToOne
-    ItemNourriture dessert;
+    private ItemNourriture dessert;
 
     @ManyToOne
-    Boisson boisson;
+    private Boisson boisson;
 
     public Long getId() {
         return id;
