@@ -9,23 +9,28 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(name = "commande")
 public class Commande {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "client", referencedColumnName = "id")
+
+    @ManyToOne
     Client client;
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "restaurant", referencedColumnName = "id")
+
+    @ManyToOne
     Restaurant restaurant;
-    @OneToMany
+
+    @OneToMany(mappedBy="id")
     List<ItemNourriture> contenu;
+
     @Column
     Date heureLivraison;
+
     @Column
     boolean couvertPlastique;
+
     @Enumerated(EnumType.STRING)
     EtatCommande etat;
 
