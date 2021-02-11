@@ -3,7 +3,7 @@ package org.scholanova.mealdeliverapi.domain.ItemNourriture;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "nourriture")
+@Table(name = "nourriture", uniqueConstraints = @UniqueConstraint(columnNames={"nom"}))
 public class ItemNourriture {
 
     @Id

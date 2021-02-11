@@ -16,16 +16,5 @@ public class MealController {
     @Autowired
     MenuRepository menuRepository;
 
-    @GetMapping("/restaurant/carte")
-    public Iterable<ItemNourriture> listMainCourses () {
-        return nourritureRepository.findAll();
-
-    }
-
-    @GetMapping("/restaurant/menus")
-    public Iterable<Menu> listMenus() {
-        return menuRepository.findAll();
-    }
-
 
 }
