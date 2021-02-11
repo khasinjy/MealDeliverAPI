@@ -17,22 +17,22 @@ public class Commande {
     private Long id;
 
     @ManyToOne
-    Client client;
+    private Client client;
 
     @ManyToOne
-    Restaurant restaurant;
+    private Restaurant restaurant;
 
     @OneToMany(mappedBy="id")
-    List<ItemNourriture> contenu;
+    private List<ItemNourriture> contenu;
 
     @Column
-    Date heureLivraison;
+    private Date heureLivraison;
 
     @Column
     boolean couvertPlastique;
 
     @Enumerated(EnumType.STRING)
-    EtatCommande etat;
+    private EtatCommande etat;
 
 
     public Commande() {
