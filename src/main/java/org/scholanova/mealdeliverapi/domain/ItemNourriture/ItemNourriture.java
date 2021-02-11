@@ -46,14 +46,6 @@ public class ItemNourriture {
         this.nom = nom;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public int getTempsPreparation() {
         return tempsPreparation;
     }
