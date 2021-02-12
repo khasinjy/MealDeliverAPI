@@ -1,9 +1,8 @@
-package org.scholanova.mealdeliverapi.domain;
+package org.scholanova.mealdeliverapi.domain.Restaurant;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "restaurants")
 public class Restaurant {
 
     @Id
@@ -11,10 +10,10 @@ public class Restaurant {
     private Long id;
 
     @Column
-    String nom;
+    private String nom;
 
     @Column
-    String adresse;
+    private String adresse;
 
     public Restaurant() {
     }
@@ -31,16 +30,8 @@ public class Restaurant {
         return nom;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
     public String getAdresse() {
         return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
     }
 
     @Override

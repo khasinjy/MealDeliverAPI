@@ -8,10 +8,13 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column
     String prenom;
+
     @Column
     String adresse;
+
     @Column
     int ptsFidelite;
 

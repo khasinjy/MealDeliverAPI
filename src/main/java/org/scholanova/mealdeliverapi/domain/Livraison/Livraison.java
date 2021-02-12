@@ -3,7 +3,7 @@ package org.scholanova.mealdeliverapi.domain.Livraison;
 import org.scholanova.mealdeliverapi.domain.Client;
 import org.scholanova.mealdeliverapi.domain.Commande.Commande;
 import org.scholanova.mealdeliverapi.domain.Livreur;
-import org.scholanova.mealdeliverapi.domain.Restaurant;
+import org.scholanova.mealdeliverapi.domain.Restaurant.Restaurant;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package org.scholanova.mealdeliverapi.application;
+package org.scholanova.mealdeliverapi.application.controllers;
 
 import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
 import org.scholanova.mealdeliverapi.infrastructure.repository.NourritureRepository;
