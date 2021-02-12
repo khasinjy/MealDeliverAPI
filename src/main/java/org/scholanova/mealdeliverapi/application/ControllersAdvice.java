@@ -2,6 +2,7 @@ package org.scholanova.mealdeliverapi.application;
 import org.scholanova.mealdeliverapi.application.controllers.MenuController;
 import org.scholanova.mealdeliverapi.application.controllers.NourritureController;
 import org.scholanova.mealdeliverapi.application.controllers.RestaurantController;
+import org.scholanova.mealdeliverapi.application.controllers.RestoContientController;
 import org.scholanova.mealdeliverapi.domain.Menu.Exception.MenuChoixIndisponibleException;
 import org.scholanova.mealdeliverapi.domain.Menu.Exception.MenuMauvaisTypeException;
 
@@ -17,8 +18,16 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice(assignableTypes =  {RestaurantController.class, MenuController.class,
-        NourritureController.class, RestoContient.class, RestoContientBoissons.class})
+        NourritureController.class, RestoContientController.class})
 public class ControllersAdvice {
+
+        @ResponseStatus(HttpStatus.NOT_FOUND)
+        @ExceptionHandler(RestaurantNonTrouveException.class)
+        @ResponseBody
+        ErrorInfo
+        handleRestaurantNonTrouveException(HttpServletRequest req, Exception ex) {
+                return new ErrorInfo(req.getRequestURL().toString(), ex);
+        }
 
         @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
         @ExceptionHandler(MenuMauvaisTypeException.class)
