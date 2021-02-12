@@ -8,6 +8,7 @@ import org.scholanova.mealdeliverapi.domain.Menu.Exception.MenuMauvaisTypeExcept
 import org.scholanova.mealdeliverapi.domain.Restaurant.Exception.ProduitNonDisponibleException;
 import org.scholanova.mealdeliverapi.domain.Restaurant.Exception.RestaurantNonTrouveException;
 import org.scholanova.mealdeliverapi.domain.Restaurant.RestoContient;
+import org.scholanova.mealdeliverapi.domain.Restaurant.RestoContientBoissons;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -15,7 +16,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.servlet.http.HttpServletRequest;
 
-@ControllerAdvice(assignableTypes =  {RestaurantController.class, MenuController.class, NourritureController.class, RestoContient.class})
+@ControllerAdvice(assignableTypes =  {RestaurantController.class, MenuController.class,
+        NourritureController.class, RestoContient.class, RestoContientBoissons.class})
 public class ControllersAdvice {
 
         @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
