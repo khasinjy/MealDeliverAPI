@@ -1,4 +1,4 @@
-package org.scholanova.mealdeliverapi.infrastructure.Commande;
+package org.scholanova.mealdeliverapi.infrastructure.repository;
 
 import org.scholanova.mealdeliverapi.domain.Commande.Commande;
 import org.springframework.data.repository.CrudRepository;

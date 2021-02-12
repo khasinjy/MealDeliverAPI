@@ -1,7 +1,7 @@
 package org.scholanova.mealdeliverapi.application;
 
 import org.scholanova.mealdeliverapi.domain.Commande.Commande;
-import org.scholanova.mealdeliverapi.infrastructure.Commande.CommandeRepository;
+import org.scholanova.mealdeliverapi.infrastructure.repository.CommandeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
