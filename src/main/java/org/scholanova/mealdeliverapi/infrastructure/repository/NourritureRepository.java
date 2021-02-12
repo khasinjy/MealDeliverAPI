@@ -1,4 +1,4 @@
-package org.scholanova.mealdeliverapi.infrastructure.Plat.repository;
+package org.scholanova.mealdeliverapi.infrastructure.repository;
 
 import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
 import org.springframework.data.jpa.repository.Query;

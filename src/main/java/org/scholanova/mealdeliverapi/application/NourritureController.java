@@ -1,9 +1,8 @@
 package org.scholanova.mealdeliverapi.application;
 
 import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
-import org.scholanova.mealdeliverapi.infrastructure.Plat.repository.NourritureRepository;
+import org.scholanova.mealdeliverapi.infrastructure.repository.NourritureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

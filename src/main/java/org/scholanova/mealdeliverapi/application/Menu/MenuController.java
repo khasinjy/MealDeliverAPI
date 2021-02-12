@@ -7,7 +7,7 @@ import org.scholanova.mealdeliverapi.domain.Menu.Menu;
 import org.scholanova.mealdeliverapi.domain.Menu.MenuPersistence;
 import org.scholanova.mealdeliverapi.infrastructure.repository.BoissonRepository;
 import org.scholanova.mealdeliverapi.infrastructure.repository.MenuRepository;
-import org.scholanova.mealdeliverapi.infrastructure.Plat.repository.NourritureRepository;
+import org.scholanova.mealdeliverapi.infrastructure.repository.NourritureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
