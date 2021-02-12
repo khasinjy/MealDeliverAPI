@@ -29,21 +29,23 @@ public class MenuController {
     public void addMenu(@RequestBody MenuPersistence menu) {
 
             ItemNourriture entree = nourritureRepository.findByName(menu.getEntree());
-            if(entree == null){ throw new MenuChoixIndisponibleException(menu.getEntree() + " n'est plus disponible");}
+            if(entree == null){ throw new MenuChoixIndisponibleException(menu.getEntree() + " n'est pas disponible.");}
 
             ItemNourriture plat = nourritureRepository.findByName(menu.getPlat());
-            if(plat == null){ throw new MenuChoixIndisponibleException(menu.getPlat() + " n'est plus disponible");}
+            if(plat == null){ throw new MenuChoixIndisponibleException(menu.getPlat() + " n'est pas disponible.");}
 
             ItemNourriture dessert = nourritureRepository.findByName(menu.getDessert());
-            if(dessert == null){ throw new MenuChoixIndisponibleException(menu.getDessert() + " n'est plus disponible");}
+            if(dessert == null){ throw new MenuChoixIndisponibleException(menu.getDessert() + " n'est pas disponible.");}
 
             Boisson boisson = boissonRepository.findByName(menu.getBoisson());
+            if(boisson == null){ throw new MenuChoixIndisponibleException(menu.getBoisson() + " n'est pas disponible.");}
+
             Menu newMenu = new Menu(entree, plat, dessert, boisson);
             menuRepository.save(newMenu);
     }
 
     @GetMapping("/restaurant/menus")
-    public Iterable<Menu> listMenus() {
+    public Iterable<Menu> listeMenus() {
         return menuRepository.findAll();
     }
 

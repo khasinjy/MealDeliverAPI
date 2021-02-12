@@ -40,4 +40,12 @@ public class RestoContient {
     public ItemNourriture getNourriture() {
         return nourriture;
     }
+
+    public RestoContient(Restaurant restaurant, ItemNourriture nourriture) {
+        this.restaurant = restaurant;
+        this.nourriture = nourriture;
+    }
+
+    public RestoContient() {
+    }
 }

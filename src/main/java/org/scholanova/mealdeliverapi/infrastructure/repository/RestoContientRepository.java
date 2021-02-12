@@ -16,10 +16,9 @@ public interface RestoContientRepository extends CrudRepository<RestoContient, L
             "ORDER BY type DESC")
     List<ItemNourriture> getCarteByRestaurantId(Long id_resto);
 
-//    @Query("DELETE RestoContient FROM ItemNourriture n, RestoContient c, Restaurant r " +
-//            "WHERE n.id = c.nourriture.id " +
-//            "AND r.id = c.restaurant.id " +
-//            "AND c.restaurant.id = ?1 " +
-//            "AND c.nourriture.id = ?2")
-//    void deleteNourritureDeLaCarte(Long id_resto, Long id_nourriture);
+    @Query("SELECT c.id FROM ItemNourriture n, RestoContient c, Restaurant r " +
+            "WHERE c.restaurant.id = ?1 " +
+            "AND c.nourriture.id = ?2")
+    Long getIdRestoContientNourritureByIds(Long id_resto, Long id_nourriture);
+
 }

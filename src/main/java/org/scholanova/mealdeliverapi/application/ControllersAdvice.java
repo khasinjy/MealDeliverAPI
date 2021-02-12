@@ -5,7 +5,9 @@ import org.scholanova.mealdeliverapi.application.controllers.RestaurantControlle
 import org.scholanova.mealdeliverapi.domain.Menu.Exception.MenuChoixIndisponibleException;
 import org.scholanova.mealdeliverapi.domain.Menu.Exception.MenuMauvaisTypeException;
 
+import org.scholanova.mealdeliverapi.domain.Restaurant.Exception.ProduitNonDisponibleException;
 import org.scholanova.mealdeliverapi.domain.Restaurant.Exception.RestaurantNonTrouveException;
+import org.scholanova.mealdeliverapi.domain.Restaurant.RestoContient;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import javax.servlet.http.HttpServletRequest;
 
-@ControllerAdvice(assignableTypes =  {RestaurantController.class, MenuController.class, NourritureController.class})
+@ControllerAdvice(assignableTypes =  {RestaurantController.class, MenuController.class, NourritureController.class, RestoContient.class})
 public class ControllersAdvice {
 
         @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
@@ -33,10 +35,10 @@ public class ControllersAdvice {
         }
 
         @ResponseStatus(HttpStatus.NOT_FOUND)
-        @ExceptionHandler(RestaurantNonTrouveException.class)
+        @ExceptionHandler(ProduitNonDisponibleException.class)
         @ResponseBody
         ErrorInfo
-        handleRestaurantNonTrouveException(HttpServletRequest req, Exception ex) {
+        handleProduitNonDisponibleException(HttpServletRequest req, Exception ex) {
                 return new ErrorInfo(req.getRequestURL().toString(), ex);
         }
 }

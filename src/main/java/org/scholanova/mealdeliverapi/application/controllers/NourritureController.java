@@ -1,11 +1,15 @@
 package org.scholanova.mealdeliverapi.application.controllers;
 
 import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
+import org.scholanova.mealdeliverapi.domain.Restaurant.Exception.ProduitNonDisponibleException;
 import org.scholanova.mealdeliverapi.domain.Restaurant.Exception.RestaurantNonTrouveException;
+import org.scholanova.mealdeliverapi.domain.Restaurant.Restaurant;
+import org.scholanova.mealdeliverapi.domain.Restaurant.RestoContient;
 import org.scholanova.mealdeliverapi.infrastructure.repository.NourritureRepository;
 import org.scholanova.mealdeliverapi.infrastructure.repository.RestaurantRepository;
 import org.scholanova.mealdeliverapi.infrastructure.repository.RestoContientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,15 +34,21 @@ public class NourritureController {
     }
 
     @PostMapping("/{id_resto}/carte/add")
-    public void addNourriture(@PathVariable Long id_resto, @RequestBody ItemNourriture nourriture) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addNourritureAlaCarte(@PathVariable Long id_resto, @RequestBody ItemNourriture nourriture) {
         verifSiRestoExist(id_resto);
         nourritureRepository.save(nourriture);
+        Restaurant resto = restaurantRepository.findById(id_resto).get();
+        restoContientRepository.save(new RestoContient(resto, nourriture));
     }
 
-    @DeleteMapping("/{id_resto}/carte/delete/{id}")
-    public void deleteNourriture(@PathVariable Long id_resto, @PathVariable Long id_nourriture) {
-//        verifSiRestoExist(id_resto);
-//        restoContientRepository.deleteNourritureDeLaCarte(id_resto, id_nourriture);
+    @DeleteMapping("/{id_resto}/carte/delete/{id_nourriture}")
+    @ResponseStatus(HttpStatus.RESET_CONTENT)
+    public void retirerNourritureDeLaCarte(@PathVariable Long id_resto, @PathVariable Long id_nourriture) {
+        verifSiRestoExist(id_resto);
+        Long id = restoContientRepository.getIdRestoContientNourritureByIds(id_resto, id_nourriture);
+        if(id == null){ throw new ProduitNonDisponibleException("Le restaurant ne propose déjà plus ce produit.");}
+        restoContientRepository.deleteById(id);
     }
 
     private void verifSiRestoExist(Long id_resto) {
