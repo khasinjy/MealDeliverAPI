@@ -1,0 +1,19 @@
+@startuml
+
+class Chrono {
+    - duree : long
+    - pauseDepart : long
+    - pauseFin : long
+    - tempsDepart : long
+    - tempsFin : long
+    + getDureeMs()
+    + getDureeSec()
+    + getDureeTxt()
+    + pause()
+    + resume()
+    + start()
+    + stop()
+    {static} + timeToHMS()
+}
+
+@enduml

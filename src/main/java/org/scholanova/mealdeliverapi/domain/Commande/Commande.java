@@ -1,7 +1,9 @@
 package org.scholanova.mealdeliverapi.domain.Commande;
 
-import org.scholanova.mealdeliverapi.domain.Client;
-import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
+import org.scholanova.mealdeliverapi.domain.Client.Client;
+import org.scholanova.mealdeliverapi.domain.Livreur.Livreur;
+import org.scholanova.mealdeliverapi.domain.Menu.Menu;
+import org.scholanova.mealdeliverapi.domain.Produit.Produit;
 import org.scholanova.mealdeliverapi.domain.Restaurant.Restaurant;
 
 import javax.persistence.*;
@@ -19,10 +21,16 @@ public class Commande {
     private Client client;
 
     @ManyToOne
+    private Livreur livreur;
+
+    @ManyToOne
     private Restaurant restaurant;
 
     @OneToMany
-    private List<ItemNourriture> contenu;
+    private List<Produit> contenu;
+
+    @OneToMany
+    private List<Menu> contenu_menu;
 
     @Column
     private Date heureLivraison;
@@ -35,6 +43,16 @@ public class Commande {
 
 
     public Commande() {
+    }
+
+    public Commande(Client client, Restaurant restaurant, List<Produit> contenu, List<Menu> contenu_menu, Date heureLivraison, boolean couvertPlastique) {
+        this.client = client;
+        this.restaurant = restaurant;
+        this.contenu = contenu;
+        this.contenu_menu = contenu_menu;
+        this.heureLivraison = heureLivraison;
+        this.couvertPlastique = couvertPlastique;
+        this.etat = EtatCommande.EN_PREPARATION;
     }
 
     public Long getId() {
@@ -53,6 +71,14 @@ public class Commande {
         this.client = client;
     }
 
+    public Livreur getLivreur() {
+        return livreur;
+    }
+
+    public void setLivreur(Livreur livreur) {
+        this.livreur = livreur;
+    }
+
     public Restaurant getRestaurant() {
         return restaurant;
     }
@@ -61,12 +87,20 @@ public class Commande {
         this.restaurant = restaurant;
     }
 
-    public List<ItemNourriture> getContenu() {
+    public List<Produit> getContenu() {
         return contenu;
     }
 
-    public void setContenu(List<ItemNourriture> contenu) {
+    public void setContenu(List<Produit> contenu) {
         this.contenu = contenu;
+    }
+
+    public List<Menu> getContenu_menu() {
+        return contenu_menu;
+    }
+
+    public void setContenu_menu(List<Menu> contenu_menu) {
+        this.contenu_menu = contenu_menu;
     }
 
     public Date getHeureLivraison() {
@@ -92,5 +126,4 @@ public class Commande {
     public void setEtat(EtatCommande etat) {
         this.etat = etat;
     }
-
 }

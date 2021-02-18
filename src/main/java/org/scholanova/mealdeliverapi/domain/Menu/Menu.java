@@ -1,8 +1,7 @@
 package org.scholanova.mealdeliverapi.domain.Menu;
 
-import org.scholanova.mealdeliverapi.domain.Boisson;
-import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
-import org.scholanova.mealdeliverapi.domain.ItemNourriture.TypeNourriture;
+import org.scholanova.mealdeliverapi.domain.Produit.Produit;
+import org.scholanova.mealdeliverapi.domain.Produit.TypeProduit;
 import org.scholanova.mealdeliverapi.domain.Menu.Exception.MenuMauvaisTypeException;
 
 import javax.persistence.*;
@@ -15,49 +14,60 @@ public class Menu {
     private Long id;
 
     @ManyToOne
-    private ItemNourriture entree;
+    private Produit entree;
 
     @ManyToOne
-    private ItemNourriture plat;
+    private Produit plat;
 
     @ManyToOne
-    private ItemNourriture dessert;
+    private Produit dessert;
 
     @ManyToOne
-    private Boisson boisson;
+    private Produit boisson;
+
+    @Column
+    private Float prix=0f;
 
     public Long getId() {
         return id;
     }
 
-    public ItemNourriture getEntree() {
+    public Produit getEntree() {
         return entree;
     }
 
-    public ItemNourriture getPlat() {
+    public Produit getPlat() {
         return plat;
     }
 
-    public ItemNourriture getDessert() {
+    public Produit getDessert() {
         return dessert;
     }
 
-    public Boisson getBoisson() {
+    public Produit getBoisson() {
         return boisson;
     }
 
-    public ItemNourriture verifType(TypeNourriture typeAttendu, ItemNourriture nourriture) {
-        if( typeAttendu != nourriture.getType()){
-            throw new MenuMauvaisTypeException(nourriture.getNom() + " n'est pas un(e) " + typeAttendu);
-        }
-        return nourriture;
+    public Float getPrix() {
+        return prix;
     }
 
-    public Menu(ItemNourriture entree, ItemNourriture plat, ItemNourriture dessert, Boisson boisson){
-            this.entree = verifType(TypeNourriture.ENTREE, entree);
-            this.plat = verifType(TypeNourriture.PLAT, plat);
-            this.dessert = verifType(TypeNourriture.DESSERT, dessert);
-            this.boisson = boisson;
+    public Produit verifType(TypeProduit typeAttendu, Produit produit) {
+        if( typeAttendu != produit.getType()){
+            throw new MenuMauvaisTypeException(produit.getNom() + " n'est pas un(e) " + typeAttendu);
+        }
+        return produit;
+    }
+
+    public Menu(Produit entree, Produit plat, Produit dessert, Produit boisson, Float prix){
+            this.entree = verifType(TypeProduit.ENTREE, entree);
+            this.plat = verifType(TypeProduit.PLAT, plat);
+            this.dessert = verifType(TypeProduit.DESSERT, dessert);
+            this.boisson = verifType(TypeProduit.BOISSON, boisson);
+            this.prix = prix;
+    }
+
+    public Menu() {
     }
 
     @Override

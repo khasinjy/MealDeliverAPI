@@ -6,6 +6,7 @@ public class MenuPersistence {
     private String plat;
     private String dessert;
     private String boisson;
+    private Float prix;
 
     public String getEntree() {
         return entree;
@@ -39,6 +40,10 @@ public class MenuPersistence {
         this.boisson = boisson;
     }
 
+    public Float getPrix() {
+        return prix;
+    }
+
     @Override
     public String toString() {
         return "MenuPersistence{" +
@@ -46,6 +51,9 @@ public class MenuPersistence {
                 ", plat='" + plat + '\'' +
                 ", dessert='" + dessert + '\'' +
                 ", boisson='" + boisson + '\'' +
+                ", prix='" + prix + '\'' +
                 '}';
     }
+
+    
 }

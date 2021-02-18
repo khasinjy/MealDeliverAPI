@@ -1,6 +1,6 @@
 package org.scholanova.mealdeliverapi.domain.Restaurant;
 
-import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
+import org.scholanova.mealdeliverapi.domain.Produit.Produit;
 
 import javax.persistence.*;
 
@@ -15,7 +15,7 @@ public class RestoContient {
     Restaurant restaurant;
 
     @ManyToOne
-    ItemNourriture nourriture;
+    Produit produit;
 
     public Long getId() {
         return id;
@@ -29,21 +29,21 @@ public class RestoContient {
         this.restaurant = restaurant;
     }
 
-    public void setNourriture(ItemNourriture nourriture) {
-        this.nourriture = nourriture;
+    public void setProduit(Produit produit) {
+        this.produit = produit;
     }
 
     public Restaurant getRestaurant() {
         return restaurant;
     }
 
-    public ItemNourriture getNourriture() {
-        return nourriture;
+    public Produit getProduit() {
+        return produit;
     }
 
-    public RestoContient(Restaurant restaurant, ItemNourriture nourriture) {
+    public RestoContient(Restaurant restaurant, Produit produit) {
         this.restaurant = restaurant;
-        this.nourriture = nourriture;
+        this.produit = produit;
     }
 
     public RestoContient() {

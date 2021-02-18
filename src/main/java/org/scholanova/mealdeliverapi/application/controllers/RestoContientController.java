@@ -1,12 +1,10 @@
 package org.scholanova.mealdeliverapi.application.controllers;
 
-import org.scholanova.mealdeliverapi.domain.Boisson;
-import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
+import org.scholanova.mealdeliverapi.domain.Produit.Produit;
 import org.scholanova.mealdeliverapi.domain.Restaurant.Exception.ProduitNonDisponibleException;
 import org.scholanova.mealdeliverapi.domain.Restaurant.Exception.RestaurantNonTrouveException;
 import org.scholanova.mealdeliverapi.domain.Restaurant.Restaurant;
 import org.scholanova.mealdeliverapi.domain.Restaurant.RestoContient;
-import org.scholanova.mealdeliverapi.domain.Restaurant.RestoContientBoissons;
 import org.scholanova.mealdeliverapi.infrastructure.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,10 +17,7 @@ import java.util.List;
 public class RestoContientController {
 
     @Autowired
-    NourritureRepository nourritureRepository;
-
-    @Autowired
-    BoissonRepository boissonRepository;
+    ProduitRepository produitRepository;
 
     @Autowired
     RestaurantRepository restaurantRepository;
@@ -30,57 +25,28 @@ public class RestoContientController {
     @Autowired
     RestoContientRepository restoContientRepository;
 
-    @Autowired
-    RestoContientBoissonsRepository restoContientBoissonsRepository;
-
-    @GetMapping("/{id_resto}/carte/nourriture")
-    public List<ItemNourriture> listeNourriture(@PathVariable Long id_resto) {
+    @GetMapping("/{id_resto}/carte")
+    public List<Produit> listeProduit(@PathVariable Long id_resto) {
         verifSiRestoExist(id_resto);
-        List<ItemNourriture> listeNourriture = restoContientRepository.getCarteByRestaurantId(id_resto);
-        return  listeNourriture;
+        return  restoContientRepository.getCarteByRestaurantId(id_resto);
     }
 
-    @GetMapping("/{id_resto}/carte/boissons")
-    public List<Boisson> listeBoissons(@PathVariable Long id_resto) {
-        verifSiRestoExist(id_resto);
-        List<Boisson> listeBoissons = restoContientBoissonsRepository.getCarteByRestaurantId(id_resto);
-        return listeBoissons;
-    }
-
-    @PostMapping("/{id_resto}/carte/nourriture/add")
+    @PostMapping("/{id_resto}/carte/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addNourritureAlaCarte(@PathVariable Long id_resto, @RequestBody ItemNourriture nourriture) {
+    public void addProduitAlaCarte(@PathVariable Long id_resto, @RequestBody Produit produit) {
         verifSiRestoExist(id_resto);
-        nourritureRepository.save(nourriture);
+        produitRepository.save(produit);
         Restaurant resto = restaurantRepository.findById(id_resto).get();
-        restoContientRepository.save(new RestoContient(resto, nourriture));
+        restoContientRepository.save(new RestoContient(resto, produit));
     }
 
-    @PostMapping("/{id_resto}/carte/boisson/add")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void addBoissonAlaCarte(@PathVariable Long id_resto, @RequestBody Boisson boisson) {
-        verifSiRestoExist(id_resto);
-        boissonRepository.save(boisson);
-        Restaurant resto = restaurantRepository.findById(id_resto).get();
-        restoContientBoissonsRepository.save(new RestoContientBoissons(resto, boisson));
-    }
-
-    @DeleteMapping("/{id_resto}/carte/nourriture/delete/{id_nourriture}")
+    @DeleteMapping("/{id_resto}/carte/delete/{id_produit}")
     @ResponseStatus(HttpStatus.RESET_CONTENT)
-    public void retirerNourritureDeLaCarte(@PathVariable Long id_resto, @PathVariable Long id_nourriture) {
+    public void retirerProduitDeLaCarte(@PathVariable Long id_resto, @PathVariable Long id_produit) {
         verifSiRestoExist(id_resto);
-        Long id = restoContientRepository.getIdRestoContientNourritureByIds(id_resto, id_nourriture);
+        Long id = restoContientRepository.getIdRestoContienteByIds(id_resto, id_produit);
         if(id == null){ throw new ProduitNonDisponibleException("Le restaurant ne propose déjà plus ce produit.");}
         restoContientRepository.deleteById(id);
-    }
-
-    @DeleteMapping("/{id_resto}/carte/boisson/delete/{id_nourriture}")
-    @ResponseStatus(HttpStatus.RESET_CONTENT)
-    public void retirerBoissonDeLaCarte(@PathVariable Long id_resto, @PathVariable Long id_boisson) {
-        verifSiRestoExist(id_resto);
-        Long id = restoContientBoissonsRepository.getIdRestoContientBoissonsByIds(id_resto, id_boisson);
-        if(id == null){ throw new ProduitNonDisponibleException("Le restaurant ne propose déjà plus ce produit.");}
-        restoContientBoissonsRepository.deleteById(id);
     }
 
     private void verifSiRestoExist(Long id_resto) {

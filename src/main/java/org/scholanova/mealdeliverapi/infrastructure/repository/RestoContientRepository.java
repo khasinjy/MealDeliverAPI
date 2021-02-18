@@ -1,6 +1,6 @@
 package org.scholanova.mealdeliverapi.infrastructure.repository;
 
-import org.scholanova.mealdeliverapi.domain.ItemNourriture.ItemNourriture;
+import org.scholanova.mealdeliverapi.domain.Produit.Produit;
 import org.scholanova.mealdeliverapi.domain.Restaurant.RestoContient;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -9,16 +9,16 @@ import java.util.List;
 
 public interface RestoContientRepository extends CrudRepository<RestoContient, Long> {
 
-    @Query("SELECT n FROM ItemNourriture n, RestoContient c, Restaurant r " +
-            "WHERE n.id = c.nourriture.id " +
+    @Query("SELECT p FROM Produit p, RestoContient c, Restaurant r " +
+            "WHERE p.id = c.produit.id " +
             "AND r.id = c.restaurant.id " +
             "AND c.restaurant.id = ?1 " +
             "ORDER BY type DESC")
-    List<ItemNourriture> getCarteByRestaurantId(Long id_resto);
+    List<Produit> getCarteByRestaurantId(Long id_resto);
 
-    @Query("SELECT c.id FROM ItemNourriture n, RestoContient c, Restaurant r " +
+    @Query("SELECT c.id FROM Produit p, RestoContient c, Restaurant r " +
             "WHERE c.restaurant.id = ?1 " +
-            "AND c.nourriture.id = ?2")
-    Long getIdRestoContientNourritureByIds(Long id_resto, Long id_nourriture);
+            "AND c.produit.id = ?2")
+    Long getIdRestoContienteByIds(Long id_resto, Long id_produit);
 
 }

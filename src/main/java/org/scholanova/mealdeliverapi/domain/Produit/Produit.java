@@ -1,35 +1,31 @@
-package org.scholanova.mealdeliverapi.domain.ItemNourriture;
+package org.scholanova.mealdeliverapi.domain.Produit;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "nourriture")
-public class ItemNourriture {
+public class Produit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
-    private float prix;
+    private Float prix;
 
     @Column
     private String nom;
 
     @Column
-    private int tempsPreparation;
+    private int tempsPreparation; //en minutes
 
     @Enumerated(EnumType.STRING)
-    private TypeNourriture type;
-
-    public ItemNourriture() {
-    }
+    private TypeProduit type;
 
     public Long getId() { return id; }
 
     public void setId(Long id) { this.id = id; }
 
-    public float getPrix() {
+    public Float getPrix() {
         return prix;
     }
 
@@ -41,13 +37,13 @@ public class ItemNourriture {
         return tempsPreparation;
     }
 
-    public TypeNourriture getType() {
+    public TypeProduit getType() {
         return type;
     }
 
     @Override
     public String toString() {
-        return "ItemNourriture{" +
+        return "ELement{" +
                 "id=" + id +
                 ", prix=" + prix +
                 ", nom='" + nom + '\'' +

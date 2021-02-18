@@ -1,4 +1,4 @@
-package org.scholanova.mealdeliverapi.domain;
+package org.scholanova.mealdeliverapi.domain.Client;
 
 import javax.persistence.*;
 
@@ -10,15 +10,16 @@ public class Client {
     private Long id;
 
     @Column
-    String prenom;
+    private String prenom;
 
     @Column
-    String adresse;
+    private String adresse;
 
     @Column
-    int ptsFidelite;
+    private int ptsFidelite;
 
     public Client() {
+        this.ptsFidelite = 0;
     }
 
     public Long getId() {

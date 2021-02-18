@@ -2,6 +2,7 @@ package org.scholanova.mealdeliverapi.domain.Commande;
 
 public enum EtatCommande {
 
-    PREPARATION,
-    PRET
+    EN_PREPARATION,
+    EN_CHEMIN,
+    LIVRE
 }
